@@ -185,13 +185,25 @@
  */
 
 // import mongoose
-
+import mongoose from "mongoose";
 // establish connection
+const connectionString = "mongodb+srv://admin1:first-user-1Cluster@firstcluster.frjobqx.mongodb.net/TestDB";
 
+mongoose.connect(connectionString)
+  .then(() => {
+    console.log("MongoDB connected successfully");
+  })
+  .catch((err) => {
+    console.log("Connection failed:", err);
+  });
 
 // define schema
-
-
+const studentSchema = new mongoose.Schema({
+         name: String,
+         age: Number,
+         major: String
+      });
+      const Student = mongoose.model("Student", studentSchema);
 // create document
 
 
